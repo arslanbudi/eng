@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000000; /* Latar belakang hitam sesuai gambar */
+            background-color: #000000;
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -22,27 +22,91 @@
             justify-content: center;
             min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
         }
 
+        /* --- LOGIKA UTAMA RESPONSIVE --- */
+        
+        /* 1. Pengaturan Container Utama */
         .container {
             max-width: 800px;
             width: 100%;
             text-align: center;
             animation: fadeIn 1s ease-in-out;
+            position: relative;
+            z-index: 2;
+            /* Order 2 agar di HP ada di tengah (diapit iklan) */
+            order: 2; 
         }
 
-        /* Styling untuk Gambar */
+        /* 2. Pengaturan Banner Iklan */
+        .sidebar-ad {
+            width: 300px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* TAMPILAN DESKTOP (Layar > 1200px) */
+        @media (min-width: 1201px) {
+            .sidebar-ad {
+                position: fixed; /* Melayang tetap */
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .sidebar-left {
+                left: 20px;
+            }
+            .sidebar-right {
+                right: 20px;
+            }
+        }
+
+        /* TAMPILAN MOBILE & TABLET (Layar <= 1200px) */
+        @media (max-width: 1200px) {
+            body {
+                justify-content: flex-start; /* Mulai dari atas */
+                gap: 30px; /* Jarak antar elemen */
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .sidebar-ad {
+                position: static; /* Tidak melayang lagi */
+                transform: none;
+                margin: 0 auto; /* Tengah secara horizontal */
+            }
+
+            /* Logika Urutan Tampilan di HP */
+            .sidebar-left {
+                order: 1; /* Iklan Kiri jadi di ATAS */
+                margin-bottom: 10px;
+            }
+            
+            .container {
+                order: 2; /* Konten Utama di TENGAH */
+            }
+
+            .sidebar-right {
+                order: 3; /* Iklan Kanan jadi di BAWAH */
+                margin-top: 10px;
+            }
+        }
+
+        /* Styling Gambar Utama */
         .image-wrapper {
             display: block;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(254, 44, 85, 0.3); /* Efek glow merah TikTok */
+            box-shadow: 0 0 20px rgba(254, 44, 85, 0.3);
             transition: transform 0.3s ease;
             cursor: pointer;
         }
 
         .image-wrapper:hover {
-            transform: scale(1.02); /* Efek zoom sedikit saat dihover */
+            transform: scale(1.02);
         }
 
         .image-wrapper img {
@@ -51,12 +115,12 @@
             display: block;
         }
 
-        /* Styling untuk Tombol */
+        /* Styling Tombol */
         .btn-claim {
             display: inline-block;
             margin-top: 30px;
             padding: 15px 50px;
-            background: linear-gradient(45deg, #FE2C55, #FF0050); /* Warna Merah TikTok */
+            background: linear-gradient(45deg, #FE2C55, #FF0050);
             color: white;
             text-decoration: none;
             font-size: 1.5rem;
@@ -75,7 +139,6 @@
             box-shadow: 0 6px 20px rgba(254, 44, 85, 0.7);
         }
 
-        /* Footer kecil (opsional) */
         .footer {
             margin-top: 40px;
             font-size: 0.8rem;
@@ -97,14 +160,24 @@
 </head>
 <body>
 
+    <!-- === BANNER KIRI / ATAS === -->
+    <div class="sidebar-ad sidebar-left">
+        <!-- Script Iklan 1 -->
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '5891fb6676c0734c6d972b61908af244',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/5891fb6676c0734c6d972b61908af244/invoke.js"></script>
+    </div>
+
+    <!-- === KONTEN UTAMA === -->
     <div class="container">
-        <!-- 
-           PENTING: 
-           1. Ganti 'banner.jpg' dengan nama file gambar Anda jika berbeda.
-           2. Ganti 'https://link-tujuan-anda.com' dengan URL tujuan Anda.
-        -->
-        
-        <!-- Gambar bisa diklik -->
+        <!-- Gambar Utama -->
         <a href="https://www.effectivegatecpm.com/ge65qx6gs?key=28a0fcaf13c60ae90e1d94503ac2f67b" class="image-wrapper">
             <img src="banner.png" alt="TikTok Giveaway Event">
         </a>
@@ -118,19 +191,36 @@
             &copy; 2025 Giveaway Event. All rights reserved.
         </div>
     </div>
+
+    <!-- === BANNER KANAN / BAWAH === -->
+    <div class="sidebar-ad sidebar-right">
+        <!-- Script Iklan 2 -->
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '5fee7c0df8c16e622489dca8c58825b2',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/5fee7c0df8c16e622489dca8c58825b2/invoke.js"></script>
+    </div>
+    
     <center>
- <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4884516,4,24,200,50,00011111']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4884516&101" alt="free geoip" border="0"></a></noscript>
-<!-- Histats.com  END  --> </center>
+        <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
+        <!-- Histats.com  START  (aync)-->
+        <script type="text/javascript">var _Hasync= _Hasync|| [];
+        _Hasync.push(['Histats.start', '1,4884516,4,24,200,50,00011111']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+        var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+        hs.src = ('//s10.histats.com/js15_as.js');
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();</script>
+        <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4884516&101" alt="free geoip" border="0"></a></noscript>
+        <!-- Histats.com  END  --> 
+    </center>
 </body>
 </html>
